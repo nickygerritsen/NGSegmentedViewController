@@ -1,0 +1,350 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4966E05EC0AE43EC97CB6EF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E59801C087440E598025CDB /* libPods.a */; };
+		808487F31799CB71004460FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808487F21799CB71004460FF /* UIKit.framework */; };
+		808487F51799CB71004460FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808487F41799CB71004460FF /* Foundation.framework */; };
+		808487F71799CB71004460FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808487F61799CB71004460FF /* CoreGraphics.framework */; };
+		808487FD1799CB71004460FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 808487FB1799CB71004460FF /* InfoPlist.strings */; };
+		808487FF1799CB71004460FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 808487FE1799CB71004460FF /* main.m */; };
+		808488031799CB71004460FF /* NGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 808488021799CB71004460FF /* NGAppDelegate.m */; };
+		808488051799CB71004460FF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 808488041799CB71004460FF /* Default.png */; };
+		808488071799CB71004460FF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 808488061799CB71004460FF /* Default@2x.png */; };
+		808488091799CB71004460FF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 808488081799CB71004460FF /* Default-568h@2x.png */; };
+		808488101799CBF5004460FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8084880F1799CBF5004460FF /* QuartzCore.framework */; };
+		808488141799CC30004460FF /* NGSegmentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808488131799CC30004460FF /* NGSegmentedViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		75654665D4FC4E3DABE06D49 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		7E59801C087440E598025CDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		808487EF1799CB71004460FF /* NGSegmentedViewController example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NGSegmentedViewController example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		808487F21799CB71004460FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		808487F41799CB71004460FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		808487F61799CB71004460FF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		808487FA1799CB71004460FF /* NGSegmentedViewController example-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NGSegmentedViewController example-Info.plist"; sourceTree = "<group>"; };
+		808487FC1799CB71004460FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		808487FE1799CB71004460FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		808488001799CB71004460FF /* NGSegmentedViewController example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NGSegmentedViewController example-Prefix.pch"; sourceTree = "<group>"; };
+		808488011799CB71004460FF /* NGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NGAppDelegate.h; sourceTree = "<group>"; };
+		808488021799CB71004460FF /* NGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NGAppDelegate.m; sourceTree = "<group>"; };
+		808488041799CB71004460FF /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		808488061799CB71004460FF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		808488081799CB71004460FF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8084880F1799CBF5004460FF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		808488121799CC30004460FF /* NGSegmentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NGSegmentedViewController.h; path = ../NGSegmentedViewController/NGSegmentedViewController.h; sourceTree = "<group>"; };
+		808488131799CC30004460FF /* NGSegmentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NGSegmentedViewController.m; path = ../NGSegmentedViewController/NGSegmentedViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		808487EC1799CB71004460FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				808488101799CBF5004460FF /* QuartzCore.framework in Frameworks */,
+				808487F31799CB71004460FF /* UIKit.framework in Frameworks */,
+				808487F51799CB71004460FF /* Foundation.framework in Frameworks */,
+				808487F71799CB71004460FF /* CoreGraphics.framework in Frameworks */,
+				4966E05EC0AE43EC97CB6EF9 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		808487E61799CB71004460FF = {
+			isa = PBXGroup;
+			children = (
+				8084880F1799CBF5004460FF /* QuartzCore.framework */,
+				808487F81799CB71004460FF /* NGSegmentedViewController example */,
+				808488111799CC12004460FF /* NGSegmentedViewController */,
+				808487F11799CB71004460FF /* Frameworks */,
+				808487F01799CB71004460FF /* Products */,
+				75654665D4FC4E3DABE06D49 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		808487F01799CB71004460FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				808487EF1799CB71004460FF /* NGSegmentedViewController example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		808487F11799CB71004460FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				808487F21799CB71004460FF /* UIKit.framework */,
+				808487F41799CB71004460FF /* Foundation.framework */,
+				808487F61799CB71004460FF /* CoreGraphics.framework */,
+				7E59801C087440E598025CDB /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		808487F81799CB71004460FF /* NGSegmentedViewController example */ = {
+			isa = PBXGroup;
+			children = (
+				808488011799CB71004460FF /* NGAppDelegate.h */,
+				808488021799CB71004460FF /* NGAppDelegate.m */,
+				808487F91799CB71004460FF /* Supporting Files */,
+			);
+			path = "NGSegmentedViewController example";
+			sourceTree = "<group>";
+		};
+		808487F91799CB71004460FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				808487FA1799CB71004460FF /* NGSegmentedViewController example-Info.plist */,
+				808487FB1799CB71004460FF /* InfoPlist.strings */,
+				808487FE1799CB71004460FF /* main.m */,
+				808488001799CB71004460FF /* NGSegmentedViewController example-Prefix.pch */,
+				808488041799CB71004460FF /* Default.png */,
+				808488061799CB71004460FF /* Default@2x.png */,
+				808488081799CB71004460FF /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		808488111799CC12004460FF /* NGSegmentedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				808488121799CC30004460FF /* NGSegmentedViewController.h */,
+				808488131799CC30004460FF /* NGSegmentedViewController.m */,
+			);
+			name = NGSegmentedViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		808487EE1799CB71004460FF /* NGSegmentedViewController example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8084880C1799CB71004460FF /* Build configuration list for PBXNativeTarget "NGSegmentedViewController example" */;
+			buildPhases = (
+				9AAB75B2F78849068708BAC7 /* Check Pods Manifest.lock */,
+				808487EB1799CB71004460FF /* Sources */,
+				808487EC1799CB71004460FF /* Frameworks */,
+				808487ED1799CB71004460FF /* Resources */,
+				26B13F19FCBC44E4BB588F53 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NGSegmentedViewController example";
+			productName = "NGSegmentedViewController example";
+			productReference = 808487EF1799CB71004460FF /* NGSegmentedViewController example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		808487E71799CB71004460FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NG;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Nicky Gerritsen";
+			};
+			buildConfigurationList = 808487EA1799CB71004460FF /* Build configuration list for PBXProject "NGSegmentedViewController example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 808487E61799CB71004460FF;
+			productRefGroup = 808487F01799CB71004460FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				808487EE1799CB71004460FF /* NGSegmentedViewController example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		808487ED1799CB71004460FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				808487FD1799CB71004460FF /* InfoPlist.strings in Resources */,
+				808488051799CB71004460FF /* Default.png in Resources */,
+				808488071799CB71004460FF /* Default@2x.png in Resources */,
+				808488091799CB71004460FF /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26B13F19FCBC44E4BB588F53 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AAB75B2F78849068708BAC7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		808487EB1799CB71004460FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				808487FF1799CB71004460FF /* main.m in Sources */,
+				808488031799CB71004460FF /* NGAppDelegate.m in Sources */,
+				808488141799CC30004460FF /* NGSegmentedViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		808487FB1799CB71004460FF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				808487FC1799CB71004460FF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8084880A1799CB71004460FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8084880B1799CB71004460FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8084880D1799CB71004460FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75654665D4FC4E3DABE06D49 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NGSegmentedViewController example/NGSegmentedViewController example-Prefix.pch";
+				INFOPLIST_FILE = "NGSegmentedViewController example/NGSegmentedViewController example-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8084880E1799CB71004460FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75654665D4FC4E3DABE06D49 /* Pods.xcconfig */;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NGSegmentedViewController example/NGSegmentedViewController example-Prefix.pch";
+				INFOPLIST_FILE = "NGSegmentedViewController example/NGSegmentedViewController example-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		808487EA1799CB71004460FF /* Build configuration list for PBXProject "NGSegmentedViewController example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8084880A1799CB71004460FF /* Debug */,
+				8084880B1799CB71004460FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8084880C1799CB71004460FF /* Build configuration list for PBXNativeTarget "NGSegmentedViewController example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8084880D1799CB71004460FF /* Debug */,
+				8084880E1799CB71004460FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 808487E71799CB71004460FF /* Project object */;
+}
