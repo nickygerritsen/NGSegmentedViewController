@@ -1,5 +1,7 @@
 # NGSegmentedViewController: A segmented view controller
 
+[![Build Status](https://travis-ci.org/nickygerritsen/NGSegmentedViewController.png?branch=master)](https://travis-ci.org/nickygerritsen/NGSegmentedViewController)
+
 UIViewController subclass using SDSegmentedControl and View Controller Containment API's to switch between child view controllers
 
 [![NGSegmentedViewController](https://raw.github.com/nickygerritsen/NGSegmentedViewController/master/screenshot%20and%20video/NGSegmentedViewController.png)](https://raw.github.com/nickygerritsen/NGSegmentedViewController/master/screenshot%20and%20video/NGSegmentedViewController.mov)
