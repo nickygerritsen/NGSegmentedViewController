@@ -1,2 +1,2 @@
 language: objective-c
-before_script: sh -c 'cd "NGSegmentedViewController example"'
+script: ./build.sh
