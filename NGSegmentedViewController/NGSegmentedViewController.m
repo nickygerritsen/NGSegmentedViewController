@@ -162,6 +162,18 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
 }
 
 - (void)removeViewControllerAtIndex:(NSUInteger)index {
+    if (index >= self.viewControllers.count) {
+        NSString *reason = [NSString stringWithFormat:@"Trying to remove view controller at index %d, while only %d view controllers exist",
+                            index, self.viewControllers.count];
+        [[NSException exceptionWithName:@"NGSegmentedViewController: index out of range"
+                                 reason:reason
+                               userInfo:nil] raise];
+    } else if (self.viewControllers.count == 1) {
+        NSString *reason = @"Trying to remove the last view controller, which is not allowed";
+        [[NSException exceptionWithName:@"NGSegmentedViewController: too few view controllers"
+                                 reason:reason
+                               userInfo:nil] raise];
+    }
     if (index == self.segmentedControl.selectedSegmentIndex) {
         // This is the currently selected index, select another one
         if (index == 0) {
@@ -200,6 +212,13 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
     [super viewWillAppear:animated];
     
     if (!self.hasAppeared) {
+        if (self.viewControllers.count == 0) {
+            NSString *reason = @"viewWillAppear: called while no child view controllers exist yet. If instantiating from a NIB, override awakeFromNib: and call setupWithViewControllers:titles: to setup view controllers";
+            [[NSException exceptionWithName:@"NGSegmentedViewController: too few view controllers"
+                                     reason:reason
+                                   userInfo:nil] raise];
+        }
+        
         self.hasAppeared = YES;
         
         CGRect segmentFrame = self.segmentedControl.frame;
@@ -234,12 +253,15 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
     // Swap view controllers using the containment view controller animation methods
     UIViewController *currentViewController = self.currentViewController;
     UIViewController *newViewController = self.viewControllers[self.selectedIndex];
+
+    // If we change to the view controller we're already on, do not do anything
     if (currentViewController != newViewController) {
         [currentViewController willMoveToParentViewController:nil];
         [self addChildViewController:newViewController];
         [self configureScrollView:newViewController];
         
-        // Determine with view controller has the higher index
+        // Determine which view controller has the higher index, to decide whether to animate
+        // to the right or to the left
         NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
         
         int newMultiplier;
@@ -280,6 +302,7 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
     }
 }
 
+// When the view controller is a table or collection view controller, we modify the top inset to accomodate for the segmented control
 - (void)configureScrollView:(UIViewController *)viewController {
     UIScrollView *scrollView;
     if ([viewController isKindOfClass:[UITableViewController class]]) {
