@@ -1,6 +1,6 @@
 cd "NGSegmentedViewController example"
-~/travis-utils/osx-cibuild.sh || exit $?
+XCWORKSPACE="NGSegmentedViewController example.xcworkspace" ~/travis-utils/osx-cibuild.sh || exit $?
 cd ..
 cd "NGSegmentedViewController IB example"
-~/travis-utils/osx-cibuild.sh || exit $?
+XCWORKSPACE="NGSegmentedViewController IB example.xcworkspace" ~/travis-utils/osx-cibuild.sh || exit $?
 cd ..
