@@ -1,2 +1,3 @@
 language: objective-c
 script: ./build.sh
+xcode_sdk: iphonesimulator
