@@ -10,6 +10,9 @@
 
 #import <SDSegmentedControl/SDSegmentedControl.h>
 
+#pragma mark Constants
+const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
+
 @interface NGSegmentedViewController ()
 
 @property (nonatomic) BOOL hasAppeared;
@@ -26,7 +29,7 @@
 
 @implementation NGSegmentedViewController
 
-#pragma mark Public property getters
+#pragma mark - Public property getters
 - (NSArray *)viewControllers {
     return [NSArray arrayWithArray:self.mutableViewControllers];
 }
@@ -50,7 +53,7 @@
 	return _segmentedControl;
 }
 
-#pragma mark Private property getters
+#pragma mark - Private property getters
 - (NSMutableArray *)mutableViewControllers {
     if (!_mutableViewControllers) {
         _mutableViewControllers = [NSMutableArray array];
@@ -65,7 +68,7 @@
     return _mutableTitles;
 }
 
-#pragma mark Public property setters
+#pragma mark - Public property setters
 // Also set the animation duration of the segmented control
 - (void)setAnimationDuration:(CFTimeInterval)animationDuration {
     _animationDuration = animationDuration;
@@ -79,8 +82,7 @@
     [self changeViewController];
 }
 
-#pragma mark -
-#pragma mark Initializers
+#pragma mark - Initializers
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers {
     return [self initWithViewControllers:viewControllers titles:[viewControllers valueForKeyPath:@"@unionOfObjects.title"]];
 }
@@ -88,27 +90,55 @@
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers titles:(NSArray *)titles {
     self = [super init];
     
-    _mutableViewControllers = [NSMutableArray array];
-    _mutableTitles = [NSMutableArray array];
-    
     if (self) {
-        [viewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if ([obj isKindOfClass:[UIViewController class]] && idx < [titles count]) {
-                UIViewController *viewController = obj;
-                
-                [_mutableViewControllers addObject:viewController];
-                [_mutableTitles addObject:titles[idx]];
-            }
-        }];
-        
-        _animationDuration = -1;
+        [self setupWithViewControllers:viewControllers titles:titles];
     }
     
     return self;
 }
 
-#pragma mark -
-#pragma mark Public functions
+- (id)init {
+    self = [self init];
+    if (self) {
+        [self setupWithViewControllers:nil titles:nil];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setupWithViewControllers:nil titles:nil];
+    }
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self setupWithViewControllers:nil titles:nil];
+    }
+    return self;
+}
+
+#pragma mark - Public functions
+- (void)setupWithViewControllers:(NSArray *)viewControllers titles:(NSArray *)titles {
+    _mutableViewControllers = [NSMutableArray array];
+    _mutableTitles = [NSMutableArray array];
+    
+    [viewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[UIViewController class]] && idx < [titles count]) {
+            UIViewController *viewController = obj;
+            
+            [_mutableViewControllers addObject:viewController];
+            [_mutableTitles addObject:titles[idx]];
+        }
+    }];
+    
+    _animationDuration = -1;
+    _extraScrollViewTopInset = kNGSegmentedViewControllerExtraScrollViewTopInset;
+}
+
 - (void)addViewController:(UIViewController *)viewController {
     [self addViewController:viewController withTitle:viewController.title];
 }
@@ -165,8 +195,7 @@
     }
 }
 
-#pragma mark -
-#pragma mark View lifecycle methods
+#pragma mark - View lifecycle methods
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -193,15 +222,14 @@
     }
 }
 
-#pragma mark -
-#pragma mark Internal actions
+#pragma mark - Internal actions
 // Called when the user taps on a segment in the segmented control
 - (void)segmentIndexChanged:(id)sender {
     _selectedIndex = self.segmentedControl.selectedSegmentIndex;
     [self changeViewController];
 }
 
-#pragma mark Private functions
+#pragma mark - Private functions
 - (void)changeViewController {
     // Swap view controllers using the containment view controller animation methods
     UIViewController *currentViewController = self.currentViewController;
@@ -264,11 +292,11 @@
     
     if (scrollView) {
         UIEdgeInsets contentInsets = scrollView.contentInset;
-        contentInsets.top = MAX(contentInsets.top, self.segmentedControl.frame.size.height);
+        contentInsets.top = MAX(contentInsets.top, self.segmentedControl.frame.size.height + self.extraScrollViewTopInset);
         scrollView.contentInset = contentInsets;
         
         UIEdgeInsets scrollIndicatorInsets = scrollView.scrollIndicatorInsets;
-        scrollIndicatorInsets.top = MAX(scrollIndicatorInsets.top, self.segmentedControl.frame.size.height);
+        scrollIndicatorInsets.top = MAX(scrollIndicatorInsets.top, self.segmentedControl.frame.size.height + self.extraScrollViewTopInset);
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
     }
 }

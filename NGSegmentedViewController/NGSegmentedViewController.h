@@ -17,9 +17,12 @@
 @property (nonatomic, readonly) NSArray *titles;
 @property (nonatomic) NSInteger selectedIndex;
 @property (nonatomic, assign) CFTimeInterval animationDuration;
+@property (nonatomic, assign) CGFloat extraScrollViewTopInset;
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers;
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers titles:(NSArray *)titles;
+
+- (void)setupWithViewControllers:(NSArray *)viewControllers titles:(NSArray *)titles;
 
 - (void)addViewController:(UIViewController *)viewController;
 - (void)addViewController:(UIViewController *)viewController withTitle:(NSString *)title;
