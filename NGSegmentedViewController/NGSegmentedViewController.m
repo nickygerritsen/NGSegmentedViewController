@@ -15,6 +15,7 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
 
 @interface NGSegmentedViewController ()
 
+// Private properties
 @property (nonatomic) BOOL hasAppeared;
 
 @property (nonatomic, retain) NSMutableArray *mutableViewControllers;
