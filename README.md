@@ -39,7 +39,7 @@ As this is my first open source iOS control, it is possible that I made mistakes
 
 ## Usage
 
-Import `NGSegmentedViewController.h` and `SDSegmentedControl.m` into your project and instantiate it with `initWithViewControllers:` or `initWithViewControllers:titles:`.
+Instantiate a segmented view controller with `initWithViewControllers:` or `initWithViewControllers:titles:`.
 
 When using Interface Builder, create a subclass and overwrite `awakeFromNib` to call `setupWithViewControllers:` or `setupWithViewControllers:titles:`.
 
