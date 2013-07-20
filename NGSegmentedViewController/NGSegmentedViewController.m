@@ -355,11 +355,11 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
         int oldEndMultiplier;
         
         if (currentIndex < self.selectedIndex) {
-            newMultiplier = 2;
+            newMultiplier = 1;
             oldEndMultiplier = -1;
         } else {
             newMultiplier = -1;
-            oldEndMultiplier = 2;
+            oldEndMultiplier = 1;
         }
         CGRect newFrame = CGRectMake(newMultiplier * self.view.bounds.size.width,
                                      0,
