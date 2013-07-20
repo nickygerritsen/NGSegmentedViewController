@@ -22,6 +22,12 @@ UIViewController subclass using SDSegmentedControl and View Controller Containme
 
 ## Installation
 
+### From CocoaPods
+
+Add `pod 'NGSegmentedViewController'` to your Podfile.
+
+### Manually
+
 _**Important note if your project doesn't use ARC**: you must add the `-fobjc-arc` compiler flag to `NGSegmentedViewController.m` in Target Settings > Build Phases > Compile Sources._
 
 * Drag the `NGSegmentedViewController/NGSegmentedViewController` folder into your project
