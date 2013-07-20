@@ -9,6 +9,8 @@
 #import "NGAppDelegate.h"
 
 #import "NGSegmentedViewController.h"
+#import "NGExampleTableViewController.h"
+#import "NGExampleCollectionViewController.h"
 
 @implementation NGAppDelegate
 
@@ -19,14 +21,7 @@
     UIViewController *redViewController = [[UIViewController alloc] init];
     redViewController.view.backgroundColor = [UIColor redColor];
     redViewController.title = @"Red";
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(10, redViewController.view.bounds.size.height - 50, redViewController.view.bounds.size.width - 20, 40);
-    [button setTitle:@"Add controller" forState:UIControlStateNormal];
-    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    [button addTarget:self action:@selector(addController) forControlEvents:UIControlEventTouchUpInside];
-    [redViewController.view addSubview:button];
-    
+        
     UIViewController *greenViewController = [[UIViewController alloc] init];
     greenViewController.view.backgroundColor = [UIColor greenColor];
     greenViewController.title = @"Green";
@@ -35,7 +30,14 @@
     blueViewController.view.backgroundColor = [UIColor blueColor];
     blueViewController.title = @"Blue";
     
-    NSArray *viewControllers = @[redViewController, greenViewController, blueViewController];
+    NGExampleTableViewController *tableViewController = [[NGExampleTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    tableViewController.title = @"Table view";
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    NGExampleCollectionViewController *collectionViewController = [[NGExampleCollectionViewController alloc] initWithCollectionViewLayout:flowLayout];
+    collectionViewController.title = @"Collection view";
+    
+    NSArray *viewControllers = @[redViewController, greenViewController, blueViewController, tableViewController, collectionViewController];
     
     NGSegmentedViewController *rootViewController = [[NGSegmentedViewController alloc] initWithViewControllers:viewControllers];
     self.window.rootViewController = rootViewController;
@@ -43,24 +45,6 @@
     [self.window makeKeyAndVisible];
     
     return YES;
-}
-
-- (void)addController {
-    NGSegmentedViewController *rootViewController = (NGSegmentedViewController *)self.window.rootViewController;
-
-    UIViewController *yellowViewController = [[UIViewController alloc] init];
-    yellowViewController.view.backgroundColor = [UIColor yellowColor];
-    yellowViewController.title = @"Yellow";
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(10, yellowViewController.view.bounds.size.height - 50, yellowViewController.view.bounds.size.width - 20, 40);
-    [button setTitle:@"Remove this controller" forState:UIControlStateNormal];
-    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-    [button addTarget:self action:@selector(removeController:) forControlEvents:UIControlEventTouchUpInside];
-    [yellowViewController.view addSubview:button];
-    
-    [rootViewController addViewController:yellowViewController];
-    rootViewController.selectedIndex = rootViewController.viewControllers.count - 1;
 }
 
 - (void)removeController:(id)sender {
@@ -75,7 +59,7 @@
             (*stop) = YES;
         }
     }];
-    [rootViewController removeViewControllerAtIndex:index];
+    [rootViewController removeViewControllerAtIndex:2];
 }
 
 @end

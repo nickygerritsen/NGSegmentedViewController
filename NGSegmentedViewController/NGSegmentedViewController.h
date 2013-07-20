@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) NSArray *viewControllers;
 @property (nonatomic, readonly) NSArray *titles;
 @property (nonatomic) NSInteger selectedIndex;
+@property (nonatomic, assign) CFTimeInterval animationDuration;
 
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers;
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers titles:(NSArray *)titles;

@@ -18,10 +18,15 @@
 @property (nonatomic, retain) NSMutableArray *mutableTitles;
 @property (nonatomic, weak) UIViewController *currentViewController;
 
+// Private methods
+- (void)changeViewController;
+- (void)configureScrollView:(UIViewController *)viewController;
+
 @end
 
 @implementation NGSegmentedViewController
 
+#pragma mark Public property getters
 - (NSArray *)viewControllers {
     return [NSArray arrayWithArray:self.mutableViewControllers];
 }
@@ -30,6 +35,22 @@
     return [NSArray arrayWithArray:self.mutableTitles];
 }
 
+- (SDSegmentedControl *)segmentedControl {
+	if (!_segmentedControl) {
+		_segmentedControl = [[SDSegmentedControl alloc] initWithItems:self.mutableTitles];
+		_segmentedControl.selectedSegmentIndex = 0;
+        
+		[_segmentedControl addTarget:self action:@selector(segmentIndexChanged:) forControlEvents:UIControlEventValueChanged];
+        
+        if (_animationDuration == -1) {
+            _animationDuration = self.segmentedControl.animationDuration;
+        }
+	}
+    
+	return _segmentedControl;
+}
+
+#pragma mark Private property getters
 - (NSMutableArray *)mutableViewControllers {
     if (!_mutableViewControllers) {
         _mutableViewControllers = [NSMutableArray array];
@@ -44,17 +65,22 @@
     return _mutableTitles;
 }
 
-- (SDSegmentedControl *)segmentedControl {
-	if (!_segmentedControl) {
-		_segmentedControl = [[SDSegmentedControl alloc] initWithItems:self.mutableTitles];
-		_segmentedControl.selectedSegmentIndex = 0;
-        
-		[_segmentedControl addTarget:self action:@selector(segmentIndexChanged:) forControlEvents:UIControlEventValueChanged];
-	}
-    
-	return _segmentedControl;
+#pragma mark Public property setters
+// Also set the animation duration of the segmented control
+- (void)setAnimationDuration:(CFTimeInterval)animationDuration {
+    _animationDuration = animationDuration;
+    self.segmentedControl.animationDuration = animationDuration;
 }
 
+// Can be called from outside this class, will change the view controller that is selected
+- (void)setSelectedIndex:(NSInteger)selectedIndex {
+    self.segmentedControl.selectedSegmentIndex = selectedIndex;
+    _selectedIndex = selectedIndex;
+    [self changeViewController];
+}
+
+#pragma mark -
+#pragma mark Initializers
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers {
     return [self initWithViewControllers:viewControllers titles:[viewControllers valueForKeyPath:@"@unionOfObjects.title"]];
 }
@@ -75,12 +101,14 @@
             }
         }];
         
-        _selectedIndex = 0;
+        _animationDuration = -1;
     }
     
     return self;
 }
 
+#pragma mark -
+#pragma mark Public functions
 - (void)addViewController:(UIViewController *)viewController {
     [self addViewController:viewController title:viewController.title];
 }
@@ -106,6 +134,8 @@
     [_mutableTitles removeObjectAtIndex:index];
 }
 
+#pragma mark -
+#pragma mark View lifecycle methods
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -119,6 +149,8 @@
         [self.view addSubview:self.segmentedControl];
         
         UIViewController *currentViewController = self.viewControllers[self.selectedIndex];
+        [self configureScrollView:currentViewController];
+        
         [self addChildViewController:currentViewController];
         
         currentViewController.view.frame = self.view.bounds;
@@ -130,30 +162,29 @@
     }
 }
 
-- (void)setSelectedIndex:(NSInteger)selectedIndex {
-    self.segmentedControl.selectedSegmentIndex = selectedIndex;
-    _selectedIndex = selectedIndex;
-    [self changeViewController];
-}
-
+#pragma mark -
+#pragma mark Internal actions
+// Called when the user taps on a segment in the segmented control
 - (void)segmentIndexChanged:(id)sender {
     _selectedIndex = self.segmentedControl.selectedSegmentIndex;
     [self changeViewController];
 }
 
+#pragma mark Private functions
 - (void)changeViewController {
-    // Swap view controllers
+    // Swap view controllers using the containment view controller animation methods
     UIViewController *currentViewController = self.currentViewController;
     UIViewController *newViewController = self.viewControllers[self.selectedIndex];
     if (currentViewController != newViewController) {
         [currentViewController willMoveToParentViewController:nil];
         [self addChildViewController:newViewController];
+        [self configureScrollView:newViewController];
         
         // Determine with view controller has the higher index
         NSUInteger currentIndex = [self.viewControllers indexOfObject:currentViewController];
         
-        int newMultiplier = 0;
-        int oldEndMultiplier = 0;
+        int newMultiplier;
+        int oldEndMultiplier;
         
         if (currentIndex < self.selectedIndex) {
             newMultiplier = 2;
@@ -175,7 +206,7 @@
         
         [self transitionFromViewController:currentViewController
                           toViewController:newViewController
-                                  duration:0.25
+                                  duration:self.animationDuration
                                    options:0
                                 animations:^{
                                     [self.view bringSubviewToFront:self.segmentedControl];
@@ -187,6 +218,27 @@
                                     
                                     self.currentViewController = newViewController;
                                 }];
+    }
+}
+
+- (void)configureScrollView:(UIViewController *)viewController {
+    UIScrollView *scrollView;
+    if ([viewController isKindOfClass:[UITableViewController class]]) {
+        UITableViewController *tableViewController = (UITableViewController *)viewController;
+        scrollView = tableViewController.tableView;
+    } else if ([viewController isKindOfClass:[UICollectionViewController class]]) {
+        UICollectionViewController *collectionViewController = (UICollectionViewController *)viewController;
+        scrollView = collectionViewController.collectionView;
+    }
+    
+    if (scrollView) {
+        UIEdgeInsets contentInsets = scrollView.contentInset;
+        contentInsets.top = MAX(contentInsets.top, self.segmentedControl.frame.size.height);
+        scrollView.contentInset = contentInsets;
+        
+        UIEdgeInsets scrollIndicatorInsets = scrollView.scrollIndicatorInsets;
+        scrollIndicatorInsets.top = MAX(scrollIndicatorInsets.top, self.segmentedControl.frame.size.height);
+        scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
     }
 }
 

@@ -19,6 +19,9 @@
 		808488091799CB71004460FF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 808488081799CB71004460FF /* Default-568h@2x.png */; };
 		808488101799CBF5004460FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8084880F1799CBF5004460FF /* QuartzCore.framework */; };
 		808488141799CC30004460FF /* NGSegmentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808488131799CC30004460FF /* NGSegmentedViewController.m */; };
+		808488171799DE48004460FF /* NGExampleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808488161799DE48004460FF /* NGExampleTableViewController.m */; };
+		8084881A1799E0B0004460FF /* NGExampleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 808488191799E0B0004460FF /* NGExampleCollectionViewController.m */; };
+		8084881D1799E281004460FF /* NGExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8084881C1799E281004460FF /* NGExampleCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,12 @@
 		8084880F1799CBF5004460FF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		808488121799CC30004460FF /* NGSegmentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NGSegmentedViewController.h; path = ../NGSegmentedViewController/NGSegmentedViewController.h; sourceTree = "<group>"; };
 		808488131799CC30004460FF /* NGSegmentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NGSegmentedViewController.m; path = ../NGSegmentedViewController/NGSegmentedViewController.m; sourceTree = "<group>"; };
+		808488151799DE48004460FF /* NGExampleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGExampleTableViewController.h; sourceTree = "<group>"; };
+		808488161799DE48004460FF /* NGExampleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGExampleTableViewController.m; sourceTree = "<group>"; };
+		808488181799E0B0004460FF /* NGExampleCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGExampleCollectionViewController.h; sourceTree = "<group>"; };
+		808488191799E0B0004460FF /* NGExampleCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGExampleCollectionViewController.m; sourceTree = "<group>"; };
+		8084881B1799E281004460FF /* NGExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGExampleCell.h; sourceTree = "<group>"; };
+		8084881C1799E281004460FF /* NGExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGExampleCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +104,12 @@
 				808488011799CB71004460FF /* NGAppDelegate.h */,
 				808488021799CB71004460FF /* NGAppDelegate.m */,
 				808487F91799CB71004460FF /* Supporting Files */,
+				808488151799DE48004460FF /* NGExampleTableViewController.h */,
+				808488161799DE48004460FF /* NGExampleTableViewController.m */,
+				808488181799E0B0004460FF /* NGExampleCollectionViewController.h */,
+				808488191799E0B0004460FF /* NGExampleCollectionViewController.m */,
+				8084881B1799E281004460FF /* NGExampleCell.h */,
+				8084881C1799E281004460FF /* NGExampleCell.m */,
 			);
 			path = "NGSegmentedViewController example";
 			sourceTree = "<group>";
@@ -226,6 +241,9 @@
 				808487FF1799CB71004460FF /* main.m in Sources */,
 				808488031799CB71004460FF /* NGAppDelegate.m in Sources */,
 				808488141799CC30004460FF /* NGSegmentedViewController.m in Sources */,
+				808488171799DE48004460FF /* NGExampleTableViewController.m in Sources */,
+				8084881A1799E0B0004460FF /* NGExampleCollectionViewController.m in Sources */,
+				8084881D1799E281004460FF /* NGExampleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +324,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NGSegmentedViewController example/NGSegmentedViewController example-Prefix.pch";
 				INFOPLIST_FILE = "NGSegmentedViewController example/NGSegmentedViewController example-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -318,7 +338,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NGSegmentedViewController example/NGSegmentedViewController example-Prefix.pch";
 				INFOPLIST_FILE = "NGSegmentedViewController example/NGSegmentedViewController example-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
