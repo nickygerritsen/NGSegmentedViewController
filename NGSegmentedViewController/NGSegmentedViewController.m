@@ -110,14 +110,25 @@
 #pragma mark -
 #pragma mark Public functions
 - (void)addViewController:(UIViewController *)viewController {
-    [self addViewController:viewController title:viewController.title];
+    [self addViewController:viewController withTitle:viewController.title];
 }
 
-- (void)addViewController:(UIViewController *)viewController title:(NSString *)title {
+- (void)addViewController:(UIViewController *)viewController withTitle:(NSString *)title {
     [_mutableViewControllers addObject:viewController];
     [_mutableTitles addObject:title];
     
     [self.segmentedControl insertSegmentWithTitle:title atIndex:self.segmentedControl.numberOfSegments animated:YES];
+}
+
+- (void)insertViewController:(UIViewController *)viewController atIndex:(NSUInteger)index {
+    [self insertViewController:viewController atIndex:index withTitle:viewController.title];
+}
+
+- (void)insertViewController:(UIViewController *)viewController atIndex:(NSUInteger)index withTitle:(NSString *)title {
+    [_mutableViewControllers insertObject:viewController atIndex:index];
+    [_mutableTitles insertObject:title atIndex:index];
+    
+    [self.segmentedControl insertSegmentWithTitle:title atIndex:index animated:YES];
 }
 
 - (void)removeViewControllerAtIndex:(NSUInteger)index {
@@ -132,6 +143,26 @@
     [self.segmentedControl removeSegmentAtIndex:index animated:YES];
     [_mutableViewControllers removeObjectAtIndex:index];
     [_mutableTitles removeObjectAtIndex:index];
+}
+
+- (void)removeViewController:(UIViewController *)viewController {
+    NSUInteger controllerIndex = [self.viewControllers indexOfObject:viewController];
+    if (controllerIndex != NSNotFound) {
+        [self removeViewControllerAtIndex:controllerIndex];
+    }
+}
+
+- (void)removeViewControllerWithTitle:(NSString *)title {
+    NSUInteger titleIndex = [self.titles indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        if ([title isEqualToString:obj]) {
+            (*stop) = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    if (titleIndex != NSNotFound) {
+        [self removeViewControllerAtIndex:titleIndex];
+    }
 }
 
 #pragma mark -

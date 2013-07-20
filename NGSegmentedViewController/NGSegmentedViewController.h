@@ -22,7 +22,11 @@
 - (instancetype)initWithViewControllers:(NSArray *)viewControllers titles:(NSArray *)titles;
 
 - (void)addViewController:(UIViewController *)viewController;
-- (void)addViewController:(UIViewController *)viewController title:(NSString *)title;
+- (void)addViewController:(UIViewController *)viewController withTitle:(NSString *)title;
+- (void)insertViewController:(UIViewController *)viewController atIndex:(NSUInteger)index;
+- (void)insertViewController:(UIViewController *)viewController atIndex:(NSUInteger)index withTitle:(NSString *)title;
 - (void)removeViewControllerAtIndex:(NSUInteger)index;
+- (void)removeViewController:(UIViewController *)viewController;
+- (void)removeViewControllerWithTitle:(NSString *)title;
 
 @end
