@@ -122,6 +122,10 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
 }
 
 #pragma mark - Public functions
+- (void)setupWithViewControllers:(NSArray *)viewControllers {
+    [self setupWithViewControllers:viewControllers titles:[viewControllers valueForKeyPath:@"@unionOfObjects.title"]];
+}
+
 - (void)setupWithViewControllers:(NSArray *)viewControllers titles:(NSArray *)titles {
     _mutableViewControllers = [NSMutableArray array];
     _mutableTitles = [NSMutableArray array];
@@ -129,6 +133,10 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
     [viewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         if ([obj isKindOfClass:[UIViewController class]] && idx < [titles count]) {
             UIViewController *viewController = obj;
+            
+            if ([viewController respondsToSelector:@selector(setSegmentedViewController:)]) {
+                [viewController performSelector:@selector(setSegmentedViewController:) withObject:self];
+            }
             
             [_mutableViewControllers addObject:viewController];
             [_mutableTitles addObject:titles[idx]];
@@ -144,6 +152,10 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
 }
 
 - (void)addViewController:(UIViewController *)viewController withTitle:(NSString *)title {
+    if ([viewController respondsToSelector:@selector(setSegmentedViewController:)]) {
+        [viewController performSelector:@selector(setSegmentedViewController:) withObject:self];
+    }
+    
     [_mutableViewControllers addObject:viewController];
     [_mutableTitles addObject:title];
     
@@ -155,6 +167,10 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
 }
 
 - (void)insertViewController:(UIViewController *)viewController atIndex:(NSUInteger)index withTitle:(NSString *)title {
+    if ([viewController respondsToSelector:@selector(setSegmentedViewController:)]) {
+        [viewController performSelector:@selector(setSegmentedViewController:) withObject:self];
+    }
+    
     [_mutableViewControllers insertObject:viewController atIndex:index];
     [_mutableTitles insertObject:title atIndex:index];
     
@@ -296,6 +312,9 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
         [self addChildViewController:currentViewController];
         
         currentViewController.view.frame = self.view.bounds;
+        currentViewController.view.autoresizingMask =
+        UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
         [self.view insertSubview:currentViewController.view belowSubview:self.segmentedControl];
         
         [currentViewController didMoveToParentViewController:self];
@@ -307,7 +326,12 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
 #pragma mark - Internal actions
 // Called when the user taps on a segment in the segmented control
 - (void)segmentIndexChanged:(id)sender {
-    _selectedIndex = self.segmentedControl.selectedSegmentIndex;
+    if (self.segmentedControl.selectedSegmentIndex == -1) {
+        self.segmentedControl.selectedSegmentIndex = 0;
+        _selectedIndex = 0;
+    } else {
+        _selectedIndex = self.segmentedControl.selectedSegmentIndex;
+    }
     [self changeViewController];
 }
 
@@ -347,6 +371,8 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
                                         self.view.bounds.size.height);
         
         newViewController.view.frame = newFrame;
+        newViewController.view.autoresizingMask =
+        UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
         [self transitionFromViewController:currentViewController
                           toViewController:newViewController
