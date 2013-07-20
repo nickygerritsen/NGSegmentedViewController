@@ -40,6 +40,10 @@
     NSArray *viewControllers = @[redViewController, greenViewController, blueViewController, tableViewController, collectionViewController];
     
     NGSegmentedViewController *rootViewController = [[NGSegmentedViewController alloc] initWithViewControllers:viewControllers];
+
+    [rootViewController setImage:[UIImage imageNamed:@"clock"] forViewControllerWithTitle:@"Blue"];
+    [rootViewController setTitle:@"Clock" forViewControllerWithTitle:@"Blue"];
+
     self.window.rootViewController = rootViewController;
     
     [self.window makeKeyAndVisible];

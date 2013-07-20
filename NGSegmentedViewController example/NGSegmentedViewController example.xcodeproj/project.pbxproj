@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4966E05EC0AE43EC97CB6EF9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E59801C087440E598025CDB /* libPods.a */; };
+		8079728A179AA4EF00062C86 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 80797289179AA4EF00062C86 /* clock.png */; };
 		808487F31799CB71004460FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808487F21799CB71004460FF /* UIKit.framework */; };
 		808487F51799CB71004460FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808487F41799CB71004460FF /* Foundation.framework */; };
 		808487F71799CB71004460FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 808487F61799CB71004460FF /* CoreGraphics.framework */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		75654665D4FC4E3DABE06D49 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		7E59801C087440E598025CDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		80797289179AA4EF00062C86 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		808487EF1799CB71004460FF /* NGSegmentedViewController example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NGSegmentedViewController example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		808487F21799CB71004460FF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		808487F41799CB71004460FF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,6 +103,7 @@
 		808487F81799CB71004460FF /* NGSegmentedViewController example */ = {
 			isa = PBXGroup;
 			children = (
+				80797289179AA4EF00062C86 /* clock.png */,
 				808488011799CB71004460FF /* NGAppDelegate.h */,
 				808488021799CB71004460FF /* NGAppDelegate.m */,
 				808487F91799CB71004460FF /* Supporting Files */,
@@ -195,6 +198,7 @@
 				808488051799CB71004460FF /* Default.png in Resources */,
 				808488071799CB71004460FF /* Default@2x.png in Resources */,
 				808488091799CB71004460FF /* Default-568h@2x.png in Resources */,
+				8079728A179AA4EF00062C86 /* clock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

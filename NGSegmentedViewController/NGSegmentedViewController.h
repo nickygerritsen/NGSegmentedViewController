@@ -31,5 +31,11 @@
 - (void)removeViewControllerAtIndex:(NSUInteger)index;
 - (void)removeViewController:(UIViewController *)viewController;
 - (void)removeViewControllerWithTitle:(NSString *)title;
+- (void)setImage:(UIImage *)image forViewControllerAtIndex:(NSUInteger)index;
+- (void)setImage:(UIImage *)image forViewController:(UIViewController *)viewController;
+- (void)setImage:(UIImage *)image forViewControllerWithTitle:(NSString *)title;
+- (void)setTitle:(NSString *)title forViewControllerAtIndex:(NSUInteger)index;
+- (void)setTitle:(NSString *)title forViewController:(UIViewController *)viewController;
+- (void)setTitle:(NSString *)title forViewControllerWithTitle:(NSString *)currentTitle;
 
 @end

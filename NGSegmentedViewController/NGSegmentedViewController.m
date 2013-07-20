@@ -207,6 +207,69 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
     }
 }
 
+- (void)setImage:(UIImage *)image forViewControllerAtIndex:(NSUInteger)index {
+    if (index >= self.viewControllers.count) {
+        NSString *reason = [NSString stringWithFormat:@"Trying to remove view controller at index %d, while only %d view controllers exist",
+                            index, self.viewControllers.count];
+        [[NSException exceptionWithName:@"NGSegmentedViewController: index out of range"
+                                 reason:reason
+                               userInfo:nil] raise];
+    }
+    [self.segmentedControl setImage:image forSegmentAtIndex:index];
+}
+
+- (void)setImage:(UIImage *)image forViewController:(UIViewController *)viewController {
+    NSUInteger controllerIndex = [self.viewControllers indexOfObject:viewController];
+    if (controllerIndex != NSNotFound) {
+        [self setImage:image forViewControllerAtIndex:controllerIndex];
+    }
+}
+
+- (void)setImage:(UIImage *)image forViewControllerWithTitle:(NSString *)title {
+    NSUInteger titleIndex = [self.titles indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        if ([title isEqualToString:obj]) {
+            (*stop) = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    if (titleIndex != NSNotFound) {
+        [self setImage:image forViewControllerAtIndex:titleIndex];
+    }
+}
+
+- (void)setTitle:(NSString *)title forViewControllerAtIndex:(NSUInteger)index {
+    if (index >= self.viewControllers.count) {
+        NSString *reason = [NSString stringWithFormat:@"Trying to remove view controller at index %d, while only %d view controllers exist",
+                            index, self.viewControllers.count];
+        [[NSException exceptionWithName:@"NGSegmentedViewController: index out of range"
+                                 reason:reason
+                               userInfo:nil] raise];
+    }
+    [_mutableTitles replaceObjectAtIndex:index withObject:title];
+    [self.segmentedControl setTitle:title forSegmentAtIndex:index];
+}
+
+- (void)setTitle:(NSString *)title forViewController:(UIViewController *)viewController {
+    NSUInteger controllerIndex = [self.viewControllers indexOfObject:viewController];
+    if (controllerIndex != NSNotFound) {
+        [self setTitle:title forViewControllerAtIndex:controllerIndex];
+    }
+}
+
+- (void)setTitle:(NSString *)title forViewControllerWithTitle:(NSString *)currentTitle {
+    NSUInteger titleIndex = [self.titles indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        if ([currentTitle isEqualToString:obj]) {
+            (*stop) = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    if (titleIndex != NSNotFound) {
+        [self setTitle:title forViewControllerAtIndex:titleIndex];
+    }
+}
+
 #pragma mark - View lifecycle methods
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
