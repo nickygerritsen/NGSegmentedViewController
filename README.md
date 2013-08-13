@@ -15,6 +15,7 @@ UIViewController subclass using SDSegmentedControl and View Controller Containme
 - Can be used with code and Interface Builder
 - Can be used with Autolayout
 - When using `UITableView`'s or `UICollectionView`'s automatically adjusts `contentInset` and `scrollIndicatorInsets` to accomodate for segmented control
+- Allows for a delegate to be notified when the selected view controller will / did change
 
 ## Requirements
 

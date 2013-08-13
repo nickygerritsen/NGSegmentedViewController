@@ -344,6 +344,10 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
 
     // If we change to the view controller we're already on, do not do anything
     if (currentViewController != newViewController) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(segmentedViewController:willChangeToIndex:)]) {
+            [self.delegate segmentedViewController:self willChangeToIndex:self.selectedIndex];
+        }
+        
         [currentViewController willMoveToParentViewController:nil];
         [self addChildViewController:newViewController];
         [self configureScrollView:newViewController];
@@ -388,6 +392,10 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
                                     [newViewController didMoveToParentViewController:self];
                                     
                                     self.currentViewController = newViewController;
+                                    
+                                    if (self.delegate && [self.delegate respondsToSelector:@selector(segmentedViewController:didChangeToIndex:)]) {
+                                        [self.delegate segmentedViewController:self didChangeToIndex:self.selectedIndex];
+                                    }
                                 }];
     }
 }

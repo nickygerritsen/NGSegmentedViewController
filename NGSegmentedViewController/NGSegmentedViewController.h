@@ -37,6 +37,29 @@
  */
 
 @class SDSegmentedControl;
+@class NGSegmentedViewController;
+
+@protocol NGSegmentedViewControllerDelegate <NSObject>
+
+@optional
+
+/**
+ This method is called when the segmented view controller will change to another index
+ 
+ @param viewController The view controller that will move to a new index
+ @param index The index that will be moved to
+ */
+- (void)segmentedViewController:(NGSegmentedViewController *)viewController willChangeToIndex:(NSUInteger)index;
+
+/**
+ This method is called when the segmented view controller did change to another index
+ 
+ @param viewController The view controller that will move to a new index
+ @param index The index that is moved to
+ */
+- (void)segmentedViewController:(NGSegmentedViewController *)viewController didChangeToIndex:(NSUInteger)index;
+
+@end
 
 @interface NGSegmentedViewController : UIViewController
 
@@ -91,6 +114,11 @@
  Extra inset to add to the top of scroll views and scroll indicators. Defaults to `2.0f`.
  */
 @property (nonatomic, assign) CGFloat extraScrollViewTopInset;
+
+/**
+ The delegate that will be used for callbacks
+ */
+@property (nonatomic, weak) id<NGSegmentedViewControllerDelegate> delegate;
 
 ///---------------------------------------
 /// @name Creating, initializing and setting up a segmented view controller
