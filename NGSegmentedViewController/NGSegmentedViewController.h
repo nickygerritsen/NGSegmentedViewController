@@ -8,6 +8,31 @@
 
 #import <UIKit/UIKit.h>
 
+@class SDSegmentedControl;
+@class NGSegmentedViewController;
+
+@protocol NGSegmentedViewControllerDelegate <NSObject>
+
+@optional
+
+/**
+ This method is called when the segmented view controller will change to another index
+ 
+ @param viewController The view controller that will move to a new index
+ @param index The index that will be moved to
+ */
+- (void)segmentedViewController:(NGSegmentedViewController *)viewController willChangeToIndex:(NSUInteger)index;
+
+/**
+ This method is called when the segmented view controller did change to another index
+ 
+ @param viewController The view controller that will move to a new index
+ @param index The index that is moved to
+ */
+- (void)segmentedViewController:(NGSegmentedViewController *)viewController didChangeToIndex:(NSUInteger)index;
+
+@end
+
 /**
  `NGSegmentedViewController` is a view controller that uses the View Controller Containment API's and SDSegmentedControl to show a set of view controllers with a segmented control at the top to switch between them. Switching between view controllers happens using animations.
  
@@ -35,31 +60,6 @@
  
  For other view controllers and / or other scroll views, it is your task to make sure to not place anything under the segmented control. You can use the `frame.size.height` of the `segmentedControl` and `extraScrollViewTopInset` to accomplish this.
  */
-
-@class SDSegmentedControl;
-@class NGSegmentedViewController;
-
-@protocol NGSegmentedViewControllerDelegate <NSObject>
-
-@optional
-
-/**
- This method is called when the segmented view controller will change to another index
- 
- @param viewController The view controller that will move to a new index
- @param index The index that will be moved to
- */
-- (void)segmentedViewController:(NGSegmentedViewController *)viewController willChangeToIndex:(NSUInteger)index;
-
-/**
- This method is called when the segmented view controller did change to another index
- 
- @param viewController The view controller that will move to a new index
- @param index The index that is moved to
- */
-- (void)segmentedViewController:(NGSegmentedViewController *)viewController didChangeToIndex:(NSUInteger)index;
-
-@end
 
 @interface NGSegmentedViewController : UIViewController
 
