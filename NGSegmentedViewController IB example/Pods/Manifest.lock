@@ -5,6 +5,6 @@ DEPENDENCIES:
   - SDSegmentedControl
 
 SPEC CHECKSUMS:
-  SDSegmentedControl: cf631be7a6abec6f7fb937ba342365d494dbfdcb
+  SDSegmentedControl: 165956a426f1fd7ff1eb486c4931241f12e0867e
 
 COCOAPODS: 0.22.2
