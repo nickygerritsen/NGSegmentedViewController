@@ -342,6 +342,9 @@ const CGFloat kNGSegmentedViewControllerExtraScrollViewTopInset = 2.0f;
     UIViewController *currentViewController = self.currentViewController;
     UIViewController *newViewController = self.viewControllers[self.selectedIndex];
 
+    if (!currentViewController)
+        return;
+    
     // If we change to the view controller we're already on, do not do anything
     if (currentViewController != newViewController) {
         if (self.delegate && [self.delegate respondsToSelector:@selector(segmentedViewController:willChangeToIndex:)]) {
